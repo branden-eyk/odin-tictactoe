@@ -1,13 +1,68 @@
 @import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Permanent+Marker&display=swap');
 
-/* font-family: 'Gochi Hand', cursive;
-font-family: 'Permanent Marker', cursive; */
+@font-face {
+    font-family: 'Colored Crayons';
+    src: url(../assets/ColoredCrayons-7wPR.woff);
+}
+
 html {
-    font-family: 'Gochi Hand', cursive;
+    font-family: 'Colored Crayons', 'Gochi Hand', cursive;
     font-size: 100%;
+    color: white;
 }
 
 body {
-    background-color: rgb(37, 37, 37);
+    background-image: url("../assets/chalkboard.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
     margin: 0;
+}
+
+.header__title {
+    font-size: 5rem;
+    text-align: center;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 150px 150px 150px;
+    grid-template-rows: 150px 150px 150px;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+}
+
+.area-1,
+.area-4,
+.area-7 {
+    border-right: solid white 5px;
+}
+
+.area-3,
+.area-6,
+.area-9 {
+    border-left: solid white 5px;
+}
+
+.area-1,
+.area-2,
+.area-3,
+.area-4,
+.area-5,
+.area-6 {
+    border-bottom: solid white 5px;
+}
+
+.grid__cell {
+    font-size: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.grid__cell:hover {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.064);
 }
