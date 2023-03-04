@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Permanent+Marker&display=swap');
+
+/* font-family: 'Gochi Hand', cursive;
+font-family: 'Permanent Marker', cursive; */
+html {
+    font-family: 'Gochi Hand', cursive;
+    font-size: 100%;
+}
+
+body {
+    background-color: rgb(37, 37, 37);
+    margin: 0;
+}
