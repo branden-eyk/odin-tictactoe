@@ -23,6 +23,15 @@ body {
     text-align: center;
 }
 
+.message {
+    min-height: 3rem;
+}
+
+.message__text {
+    font-size: 2rem;
+    text-align: center;
+}
+
 .grid {
     display: grid;
     grid-template-columns: 150px 150px 150px;
