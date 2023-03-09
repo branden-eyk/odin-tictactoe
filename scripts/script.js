@@ -19,13 +19,17 @@ const displayController = (() => {
     const grid = document.querySelector('.grid').children;
     const initialize = () => {
         for (const square of grid) {
-            square.addEventListener('click', (e) => {
-                gameBoard.addMark(e.target.dataset.index, gameBoard.getTurn());
-                gameBoard.nextTurn();
-                displayController.update();
-            });
+            square.addEventListener('click', handleClick);
         };
         gameBoard.initialize();
+    };
+
+    const handleClick = (e) => {
+        if(e.target.innerText === ""){
+            gameBoard.addMark(e.target.dataset.index, gameBoard.getTurn());
+            gameBoard.nextTurn();
+            displayController.update();
+        }   
     };
 
     const update = () => {
