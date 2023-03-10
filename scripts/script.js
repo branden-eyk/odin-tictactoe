@@ -26,8 +26,6 @@ const gameBoard = (() => {
             default:
                 break;
         };
-
-
     };
 
     const checkGame = (index) => {
@@ -169,4 +167,28 @@ const displayController = (() => {
     };
 })();
 
+const modalController = (() => {
+    const modal = document.querySelector('.modal');
+    const newGame = document.querySelector('.footer__button');
+
+    const toggleModal = () => {
+        modal.classList.toggle('hidden');
+    };
+
+    const initialize = () => {
+        newGame.addEventListener('click', toggleModal);
+        modal.addEventListener('click', (e) => {
+            if(e.target === modal){
+                toggleModal();
+            };
+        });
+    };
+
+    return{
+        initialize
+    };
+
+})();
+
+modalController.initialize();
 displayController.initialize();
