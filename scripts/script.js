@@ -5,9 +5,11 @@ const gameBoard = (() => {
     let player2 = {};
     let message = '';
 
-    const initialize = () => {
+    const initialize = (player1Name, player2Name) => {
         board = [null, null, null, null, null, null, null, null, null];
         message = '';
+        player1 = playerFactory(player1Name);
+        player2 = playerFactory(player2Name);
     };
 
     const declareWinner = (winner) => {
@@ -15,10 +17,10 @@ const gameBoard = (() => {
 
         switch (winner) {
             case 'X':
-                message = 'Player One Wins';
+                message = `${player1.name} Wins`;
                 break;
             case 'O':
-                message = 'Player Two Wins';
+                message = `${player2.name} Wins`;
                 break;
             case 'Draw':
                 message = 'Draw';
@@ -133,8 +135,8 @@ const displayController = (() => {
         for (const square of grid) {
             square.addEventListener('click', handleClick);
         };
-        gameBoard.initialize();
         messageDisplay.innerText = gameBoard.getMessage();
+        update();
     };
 
     const handleClick = (e) => {
@@ -170,6 +172,7 @@ const displayController = (() => {
 const modalController = (() => {
     const modal = document.querySelector('.modal');
     const newGame = document.querySelector('.footer__button');
+    const startGame = document.querySelector('.modal__button');
 
     const toggleModal = () => {
         modal.classList.toggle('hidden');
@@ -182,13 +185,28 @@ const modalController = (() => {
                 toggleModal();
             };
         });
+        startGame.addEventListener('click', (e) => {
+            e.preventDefault();
+            const player1 = document.querySelector('#playerOneName');
+            const player2 = document.querySelector('#playerTwoName');
+            gameBoard.initialize(player1.value, player2.value);
+            displayController.initialize();
+            console.log('clicked');
+            toggleModal();
+        });
     };
 
     return{
+        toggleModal,
         initialize
     };
 
 })();
 
+const playerFactory = (name) => {
+    const determineMove = () => {return false};
+    return {name, determineMove}; 
+};
+
 modalController.initialize();
-displayController.initialize();
+modalController.toggleModal();
