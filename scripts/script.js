@@ -1,3 +1,4 @@
+// Module for initializing, determining a winnder, and otherwise keeping track of all things related to the Tic Tac Toe game board
 const gameBoard = (() => {
     let board = [];
     let whoseTurn = 'X';
@@ -127,6 +128,7 @@ const gameBoard = (() => {
     };
 })();
 
+// Module containing all the processes involved in displaying the game progress on the webpage
 const displayController = (() => {
     const grid = document.querySelector('.grid').children;
     const messageDisplay = document.querySelector('.message__text');
@@ -169,6 +171,7 @@ const displayController = (() => {
     };
 })();
 
+// Module containing all the processes involved in displaying and hiding the new game settings modal
 const modalController = (() => {
     const modal = document.querySelector('.modal');
     const newGame = document.querySelector('.footer__button');
@@ -203,10 +206,16 @@ const modalController = (() => {
 
 })();
 
+// Factory function for generating player objects
 const playerFactory = (name) => {
+    // determineMove function doesn't do anything at this time. It was intended to be inherited by a CPU object that WOULD use it to do something.
+    // I decided to move on with The Odin Project rather than take the time to code out the logic for a CPU Player
+    // I'm leaving it in as I might return to finish this some day
     const determineMove = () => {return false};
     return {name, determineMove}; 
 };
+
+// function calls on page load to immediately show user the controls for starting a game
 
 modalController.initialize();
 modalController.toggleModal();
